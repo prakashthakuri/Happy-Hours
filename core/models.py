@@ -16,6 +16,14 @@ LABEL_CHOICES = (
     ('S', 'secondary'),
     ('D', 'danger')
 )
+CATEGORY_TYPES = (
+    ('N', 'New'),
+    ('B', 'Best Seller'),
+    ('NY', 'NY Local'),
+    ('S', 'Staff Pick'),
+    ('P', 'Most Popular'),
+    ('BL', '')
+)
 
 
 class Item(models.Model):
@@ -24,8 +32,11 @@ class Item(models.Model):
     discount_price = models.FloatField(blank=True, null=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
+    types = models.CharField(choices=CATEGORY_TYPES, max_length=2, null=True)
+
     slug = models.SlugField()
     description = models.TextField()
+    image = models.ImageField()
 
     def __str__(self):
         return self.title
@@ -44,6 +55,7 @@ class Item(models.Model):
         return reverse("core:remove-from-cart", kwargs={
             'slug': self.slug
         })
+
 
 
 class OrderItem(models.Model):
@@ -106,7 +118,7 @@ class BillingAddress(models.Model):
 
 class Payment(models.Model):
     stripe_charge_id = models.CharField(max_length=50)
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True, )
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, blank=True, null=True)
     amount = models.FloatField()
     timestamp = models.DateTimeField(auto_now_add=True)
 

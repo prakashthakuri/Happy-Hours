@@ -96,7 +96,7 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
       @error "`#{$rfs-font-size-unit}` is not a valid unit for $rfs-font-size-unit. Use `px` or `rem`.";
     }
 
-    // Only add media query if font-size is bigger as the minimum font-size
+    // Only add media_root query if font-size is bigger as the minimum font-size
     // If $rfs-factor == 1, no rescaling will take place
     @if $fs > $rfs-base-font-size and $enable-responsive-font-sizes {
       $min-width: null;
@@ -143,7 +143,7 @@ $rfs-breakpoint-unit-cache: unit($rfs-breakpoint);
 
       @if $rfs-class == "disable" {
         // Adding an extra class increases specificity,
-        // which prevents the media query to override the font size
+        // which prevents the media_root query to override the font size
         &,
         .disable-responsive-font-size &,
         &.disable-responsive-font-size {

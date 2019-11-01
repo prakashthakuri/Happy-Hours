@@ -11,7 +11,7 @@
         <!--Grid column-->
         <div class="col-md-6 mb-4">
 
-          <img src="https://images-na.ssl-images-amazon.com/images/I/919o3-pXukL._SY550_.jpg" class="img-fluid" alt="">
+                <img src="{{ item.image.url }} " class="card-img-top" alt="">
 
         </div>
         <!--Grid column-->
@@ -39,9 +39,8 @@
               {% endif %}
             </p>
 
-            <p class="lead font-weight-bold">Description</p>
 
-            <p>{{ object.description }}</p>
+<label class="lead label">#TODO --> Reviews, Sizes</label> <br/>
 
             {% comment %} <form class="d-flex justify-content-left">
               <!-- Default input -->
@@ -56,9 +55,9 @@
               Add to cart
               <i class="fas fa-shopping-cart ml-1"></i>
             </a>
-            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
-              Remove from cart
-            </a>
+{#            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">#}
+{#              Remove from cart#}
+{#            </a>#}
 
           </div>
           <!--Content-->
@@ -79,23 +78,53 @@
 
           <h4 class="my-4 h4">Additional information</h4>
 
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
-            voluptates,
-            quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.</p>
+
+            <h4 class="my-4 h4">Product Details</h4>
+
+
+          <table class="table">
+
+  <tbody>
+    <tr>
+      <td>Category</td>
+      <td>{{object.get_category_display}}</td>
+    </tr>
+    <tr>
+      <td>Region</td>
+      <td>#TODO </td>
+    </tr>
+    <tr>
+      <td>Abv</td>
+      <td>#TODO</td>
+    </tr>
+  <tr>
+      <td>Features</td>
+      <td>#TODO</td>
+    </tr>
+  <tr>
+      <td>Food Pairing</td>
+      <td>#TODO</td>
+    </tr>
+  </tbody>
+</table>
 
         </div>
         <!--Grid column-->
 
       </div>
       <!--Grid row-->
+  <p class="lead font-weight-bold">Description</p>
 
+            <p>{{ object.description }}</p>
       <!--Grid row-->
       <div class="row wow fadeIn">
 
+
+          <p class="lead font-weight-bold">Similar Products</p>
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4">
 
-          <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/11.jpg" class="img-fluid" alt="">
+          <img src="{{ item.image }}" class="img-fluid" alt="">
 
         </div>
         <!--Grid column-->

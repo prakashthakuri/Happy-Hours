@@ -66,7 +66,9 @@
           <div class="card">
 
             <div class="view overlay">
-              <img src="https://static.vinepair.com/wp-content/uploads/2018/12/Beer50.jpg" class="card-img-top" alt="">
+{#              <img src="https://products2.imgix.drizly.com/mi_7027.jpg" class="card-img-top" alt="">#}
+                <img src="{{ item.image.url }} " class="card-img-top" alt="">
+
               <a href="{{ item.get_absolute_url }}">
                 <div class="mask rgba-white-slight"></div>
               </a>
@@ -79,7 +81,7 @@
               <h5>
                 <strong>
                   <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
-                    <span class="badge badge-pill {{ item.get_label_display }}-color">NEW</span>
+                    <span class="badge badge-pill {{ item.get_label_display }}-color">{{item.get_types_display}}</span>
                   </a>
                 </strong>
               </h5>
