@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<style>
+.main{
+	display: grid;
+	grid:
+			'mainbannerLocation mainbannerLocation mainbannerLocation'
+			'first second third'
+			'secondbanner secondbanner secondbanner'
+			'category category category'
+			'downloadapp downloadapp downloadapp'
+			'locate locate locate'
+			'footer footer footer';
+	grid-gap: 20px;
+	grid-auto-flow: dense;
+	word-wrap: break-word;
+	background-color: snow;
+}
+
+.mainbannerLocation {
+    height: 800px;
+    width: auto;
+    grid-area: mainbannerLocation;
+    background-image: url("https://i.ibb.co/C0q6wBb/mainbanner.jpg");
+    background-size: cover;
+    border: 1px solid black;
+    text-align: center;
+}
+.mid{
+	margin: auto;
+	line-height: 51px;
+	vertical-align: middle;
+
+}
+
+
+.first{
+	height: auto;
+	width: 200px;
+	grid-area: first;
+    text-align: center;
+    margin: 20px;
+
+}
+.second {
+	height: auto;
+	width: 200px;
+	grid-area: second;
+        text-align: center;
+        margin: 20px;
+
+
+
+}
+
+.third{
+	height: auto;
+	width: 200px;
+	grid-area: third;
+        text-align: center;
+        margin: 20px;
+
+
+}
+
+.category {
+	height: 300px;
+	width: auto;
+	display: grid;
+	grid: 'beer beer wine wine liquor liquor extras extras';
+			grid-gap: 20px;
+	grid-auto-flow: dense;
+	word-wrap: break-word;
+
+}
+.beer {
+	height: 250px;
+	width: auto;
+	grid-area: beer;
+        text-align: center;
+
+
+}
+.wine {
+	height: 250px;
+	width: auto;
+	grid-area: wine;
+        text-align: center;
+
+
+}
+.liquor {
+	height: 250px;
+	width: auto;
+	grid-area: liquor;
+        text-align: center;
+
+}
+.extras {
+	height: 250px;
+	width: auto;
+	grid-area: extras;
+        text-align: center;
+
+}
+
+.downloadapp{
+	height: 350px;
+	width: auto;
+	grid-area: downloadapp;
+	background-color: purple;
+			border: 1px solid black;
+
+}
+
+.locate{
+	height: 400px;
+	width: auto;
+	grid-area: locate;
+	background-color: pink;
+			border: 1px solid black;
+
+}
+
+
+
+/*This is for menu*/
+
+
+
+
+
+</style>
+<main>
+  <div class="container">
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
+
+      <!-- Navbar brand -->
+      <span class="navbar-brand">Categories:</span>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">All
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Beer</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Wine</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Liquor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Extras</a>
+          </li>
+
+        </ul>
+        <!-- Links -->
+
+        <form class="form-inline">
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          </div>
+        </form>
+      </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+<div class="main">
+  <div class="mainbannerLocation">
+			<div class="mid">
+		<h2>Let the drinks come to you.</h2>
+		<h4>Beer, wine and liquor delivered in under 60 minutes.</h4>
+
+		    <input id="pac-input" class="controls" type="text" size="50" placeholder="Enter your delivery address to shop">
+		    <button>Go</button>
+		    <h3 style="text-transform: uppercase;">Use my current Location</h3>
+
+</div>
+
+
+	</div>
+
+ <div class="first">
+ 	<h4>Enter your address</h4>
+ 	<p>Don't let us tease you with things you can't have. That would be mean. Once you tell us where you're at, we'll show you what's available to you today.</p>
+ </div>
+		<div class="second">
+			<h4>Shop</h4>
+			<p>Browse from thousands of new, local, well-known and naht-so-well-known items. Select your favorites, pick your local liquor store and press that magical order button.</p>
+		</div>
+		<div class="third">
+<h4>Kick back and relax</h4>
+<p>We'll let you know when your driver is on their way with your precious cargo. And then, BAM. Drinks delivered to your door in under 60 minutes.</p>
+		</div>
+<!-- this is second promo banner -->
+<div class="category">
+		<div class="beer">
+            <h1>Beer</h1>
+        </div>
+		<div class="wine">
+            <h1>Wine</h1>
+        </div>
+		<div class="liquor">
+            <h1>Liquor</h1>
+        </div>
+		<div class="extras">
+            <h1>Extras</h1>
+        </div>
+	</div>
+  </div>
+	</div>
+
+</main>
+
+
+{% endblock content %}

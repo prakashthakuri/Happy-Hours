@@ -11,6 +11,7 @@ from .forms import CheckoutForm
 from .models import Item, OrderItem, Order, BillingAddress, Payment
 
 import stripe
+
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
@@ -52,14 +53,16 @@ class CheckoutView(View):
                 order.billing_address = billing_address
                 order.save()
 
-                # if payment_option == 'S':
-                #     return redirect('core:payment', payment_option='stripe')
-                # elif payment_option == 'P':
-                #     return redirect('core:payment', payment_option='paypal')
-                # else:
-                #     messages.warning(
-                #         self.request, "Invalid payment option selected")
-                return redirect('core:checkout')
+                # TODO: Add redirect to the selected payment option
+
+                if payment_option == 'S':
+                    return redirect('payment', payment_option='stripe')
+                elif payment_option == 'P':
+                    return redirect('payment', payment_option='paypal')
+                else:
+                    messages.warning(
+                        self.request, "Invalid payment option selected")
+                    return redirect('core:checkout')
         except ObjectDoesNotExist:
             messages.error(self.request, "You do not have an active order")
             return redirect("core:order_summary")
@@ -94,12 +97,17 @@ class PaymentView(View):
 
             # assign the payment to the order
 
+            order_items = order.items.all()
+            order_items.update(ordered=True)
+            for item in order_items:
+                item.save()
+
             order.ordered = True
             order.payment = payment
             order.save()
 
             messages.success(self.request, "Your order was successful!")
-            return redirect("core:home")
+            return redirect("/")
 
         except stripe.error.CardError as e:
             body = e.json_body
@@ -146,6 +154,11 @@ class HomeView(ListView):
     model = Item
     paginate_by = 10
     template_name = "home.html"
+
+
+class LandingView(ListView):
+    model = Item
+    template_name = "landing_page.html"
 
 
 class OrderSummaryView(LoginRequiredMixin, View):

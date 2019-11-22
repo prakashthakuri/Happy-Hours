@@ -9,6 +9,7 @@ from .views import (
     remove_from_cart,
     remove_single_item_from_cart,
     PaymentView,
+    LandingView
 
 )
 
@@ -16,6 +17,8 @@ app_name = 'core'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
+    path('landing_page', LandingView.as_view(), name='landing_page'),
+
     path('checkout/', CheckoutView.as_view(), name='checkout'),
 
     path('order_summary/', OrderSummaryView.as_view(), name='order_summary'),
