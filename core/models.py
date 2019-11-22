@@ -22,7 +22,34 @@ CATEGORY_TYPES = (
     ('NY', 'NY Local'),
     ('S', 'Staff Pick'),
     ('P', 'Most Popular'),
+    ('H', 'Holiday Pick'),
     ('BL', '')
+)
+# ------------------------------------ For R2
+CATEGORY_SIZES = (
+    ('S', '750ml'),
+    ('M', '1L'),
+    ('L', '1.75L'),
+    ('XL', '375ml')
+)
+
+CATEGORY_REGION = (
+    ('A', 'Asia'),
+    ('E', 'England'),
+    ('M', 'Mexico'),
+    ('I', 'Italy'),
+    ('A', 'France'),
+    ('S', 'South Asia'),
+    ('U', 'United States'),
+    ('S', 'Spain'),
+    ('R', 'Russia')
+)
+
+CATEGORY_ABV = (
+    ('5', '5%'),
+    ('12', '12%'),
+    ('40', '40%'),
+    ('8', '8%')
 )
 
 
@@ -34,6 +61,14 @@ class Item(models.Model):
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
     types = models.CharField(choices=CATEGORY_TYPES, max_length=2, null=True)
 
+# Note (Prakash): These features are added for R2
+    sizes = models.CharField(choices=CATEGORY_SIZES, max_length=2, null=True)
+    region = models.CharField(choices=CATEGORY_REGION, max_length=2, null=True)
+    abv = models.CharField(choices=CATEGORY_ABV, max_length=2, null=True)
+    features = models.CharField(max_length=1000)
+    tasting = models.CharField(max_length=1000)
+
+#----------------------------------------------------
     slug = models.SlugField()
     description = models.TextField()
     image = models.ImageField()
