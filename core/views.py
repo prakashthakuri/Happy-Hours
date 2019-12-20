@@ -7,8 +7,8 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, DetailView, View
 from django.shortcuts import redirect
 from django.utils import timezone
-from .forms import CheckoutForm
-from .models import Item, OrderItem, Order, BillingAddress, Payment
+from .forms import CheckoutForm,CouponForm
+from .models import Item, OrderItem, Order, BillingAddress, Payment, Coupon
 
 import stripe
 
@@ -152,9 +152,12 @@ class PaymentView(View):
 
 class HomeView(ListView):
     model = Item
-    paginate_by = 10
+    paginate_by = 8
     template_name = "home.html"
 
+class ProfileView(ListView):
+    model = Item
+    template_name = "profile.html"
 
 class LandingView(ListView):
     model = Item
@@ -177,6 +180,7 @@ class OrderSummaryView(LoginRequiredMixin, View):
 class ItemDetailView(DetailView):
     model = Item
     template_name = "product.html"
+
 
 
 @login_required
@@ -265,3 +269,30 @@ def remove_single_item_from_cart(request, slug):
     else:
         messages.info(request, "You do not have an active order")
         return redirect("core:product", slug=slug)
+
+# ----Note Prakash---- This is for a Coupon
+
+def get_coupon(request, code):
+    coupon = Coupon.objects.get(code=code)
+    try:
+        coupon = Coupon.objects.get(code=code)
+        return coupon
+    except ObjectDoesNotExist:
+        messages.info(request, "You do not have an active order")
+        return redirect('core:checkout')
+
+
+class AddCouponView(View):
+    def post(self, *args, **kwargs):
+        form = CouponForm(self.request.POST or None)
+        if form.is_valid():
+            try:
+                code = form.cleaned_data.get('code')
+                order = Order.objects.get(user=self.request.user, ordered=False)
+                order.coupon = get_coupon(self.request, code)
+                order.save()
+                messages.success(self.request, "Successfully Added Coupon")
+                return redirect("core:checkout")
+            except ObjectDoesNotExist:
+                messages.info(self.request, "You do not have an active order")
+                return redirect('core:checkout')

@@ -23,24 +23,68 @@
           <div class="p-4">
 
             <div class="mb-3">
+                <h1 class=" font-weight-bold">{{ object.title }}</h1>
               <a href="">
+
                 <span class="badge purple mr-1">{{ object.get_category_display }}</span>
+
               </a>
             </div>
 
             <p class="lead">
               {% if object.discount_price %}
               <span class="mr-1">
-                <del>${{ object.price }}</del>
+                <del class="font-weight-bolder">${{ object.price }}</del>
               </span>
-              <span>${{ object.discount_price }}</span>
+              <span class="font-weight-bolder">${{ object.discount_price }}</span>
               {% else %}
-              <span>${{ object.price }}</span>
+              <span class="font-weight-bolder">${{ object.price }}</span>
               {% endif %}
             </p>
 
 
-<label class="lead label">#TODO --> Reviews, Sizes</label> <br/>
+
+              <br/>
+    <label class="lead font-weight-bold"> Select your sizes</label>
+          <ul class="list-group list-group-horizontal-lg"  >
+              <button type="button" class="btn btn-light" >{{ object.get_sizes_display }}</button>
+              <button type="button" class="btn btn-light">1L</button>
+              <button type="button" class="btn btn-light">1.7L</button>
+              <button type="button" class="btn btn-light">2.2L</button>
+
+
+
+          </ul>
+
+
+          <br/>
+                <label class="lead font-weight-bold">Reviews</label>
+          <div>
+<style>
+.checked {
+  color: orange;
+}
+</style>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span>
+                &nbsp;&nbsp;
+
+              <label class="lead font-weight-bolder">4.0 <sup>(3 Reviews)</sup></label>
+          </div>
+          <br/>
+
+          <!--Grid row-->
+  <p class="lead font-weight-bold">Description</p>
+
+            <p style="text-align: justify">{{ object.description }}</p>
+      <!--Grid row-->
+
+
+
+
 
             {% comment %} <form class="d-flex justify-content-left">
               <!-- Default input -->
@@ -112,43 +156,21 @@
         <!--Grid column-->
 
       </div>
-      <!--Grid row-->
-  <p class="lead font-weight-bold">Description</p>
 
-            <p>{{ object.description }}</p>
-      <!--Grid row-->
-      <div class="row wow fadeIn">
+    <Br/>
+
+{% include "slideshow.html" %}
 
 
-          <p class="lead font-weight-bold">Similar Products</p>
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-12 mb-4">
 
-          <img src="{{ item.image }}" class="img-fluid" alt="">
 
-        </div>
-        <!--Grid column-->
+<br/>
+    <br/>
+    <br/>
 
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://www.esewapasal.com/pub/media/catalog/product/cache/6157b2cd00c2efa35321a4f1cf89a568/1/6/16103.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-lg-4 col-md-6 mb-4">
-
-          <img src="https://www.binnys.com/media/catalog/product/cache/eab16ae251e4410504af434c6d9419db/4/1/41657.jpg" class="img-fluid" alt="">
-
-        </div>
-        <!--Grid column-->
-
-      </div>
-      <!--Grid row-->
 
     </div>
-  </main>
 
+  </main>
+<!--/.Carousel Wrapper-->
 {% endblock content %}

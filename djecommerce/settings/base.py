@@ -51,6 +51,9 @@ TEMPLATES = [
     },
 ]
 
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
+
 WSGI_APPLICATION = 'djecommerce.wsgi.application'
 
 LANGUAGE_CODE = 'en-us'

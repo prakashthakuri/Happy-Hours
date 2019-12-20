@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<main>
+
+
+<div class="container">
+    <br/>
+    <br/>
+    <br/>
+
+    <div class="card">
+
+  <!-- Card image -->
+  <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/43.jpg" style="height: 300px" alt="Card image cap">
+
+  <!-- Card content -->
+  <div class="card-body">
+
+    <!-- Title -->
+    <h1 class="card-title"><a>{{ user }}</a></h1>
+    <!-- Text -->
+     <span>        Location: One Pace Plaza
+</span><br/>
+        <span>        Registered: Dec 15, 2019
+</span><br/>
+        <span>Date of Birth: 1994-10-13</span> <i class="fas fa-check"></i>
+    </div></h1>
+
+  </div>
+
+<!-- Card -->
+
+        <br/>
+    <div class="card">
+        <h1>Purchases History</h1>
+<br/>
+
+        <h3> You do not have any purchases</h3>
+
+    </div>
+<br/>
+    <br/>
+        <div class="card">
+        <h1>Review your Purchases</h1>
+<br/>
+
+        <h3> You do not have any purchases.</h3>
+            <h4> Make a Purchase to Review</h4>
+
+    </div>
+
+
+</div>
+</div>
+
+
+</main>
+
+
+{% endblock content %}

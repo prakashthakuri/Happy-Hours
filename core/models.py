@@ -67,6 +67,7 @@ class Item(models.Model):
     abv = models.CharField(choices=CATEGORY_ABV, max_length=2, null=True)
     features = models.CharField(max_length=1000)
     tasting = models.CharField(max_length=1000)
+    reviews = models.FloatField()
 
     # ----------------------------------------------------
     slug = models.SlugField()
@@ -127,6 +128,7 @@ class Order(models.Model):
     ordered = models.BooleanField(default=False)
     billing_address = models.ForeignKey('BillingAddress', on_delete=models.SET_NULL, blank=True, null=True)
     payment = models.ForeignKey('Payment', on_delete=models.SET_NULL, blank=True, null=True)
+    coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL, blank=True, null=True )
 
     def __str__(self):
         return self.user.username
@@ -160,3 +162,10 @@ class Payment(models.Model):
     @property
     def __str__(self):
         return self.user.username
+
+
+class Coupon(models.Model):
+    code = models.CharField(max_length= 15)
+
+    def __str__(self):
+        return self.code

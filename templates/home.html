@@ -4,6 +4,8 @@
 
 
 <main>
+
+
   <div class="container">
 
     <!--Navbar-->
@@ -55,6 +57,10 @@
     </nav>
     <!--/.Navbar-->
 
+
+  <div>
+      {% include 'googlemapModal.html' %}
+  </div>
     <!--Section: Products v.3-->
     <section class="text-center mb-4">
 
@@ -66,7 +72,6 @@
           <div class="card">
 
             <div class="view overlay">
-{#              <img src="https://products2.imgix.drizly.com/mi_7027.jpg" class="card-img-top" alt="">#}
                 <img src="{{ item.image.url }} " class="card-img-top" alt="">
 
               <a href="{{ item.get_absolute_url }}">
